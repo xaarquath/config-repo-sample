@@ -1,0 +1,69 @@
+spring:
+    profiles:
+        active: local
+    cloud:
+        bus:
+            enabled: true
+            id: my-config-server
+        stream:
+            kafka:
+                binder:
+                    zkNodes: localhost:2181
+                    brokers: localhost:9092
+server:
+    port: 8100
+        
+environment:
+    name: local
+    
+client:
+    superpower: aaa
+    
+    
+springdoc:
+    swagger-ui:
+        path: /${spring.application.name}/api-docs
+
+security:
+    authorization:
+        header-name: Authorization
+        prefix: Bearer
+    jwt:
+        authorization-token:
+            tokenId: loginJwt
+            signingKey: loginLanbide
+            expirationTime: 300 #in seconds
+        refresh-token:
+            tokenId: refreshJwt
+            signingKey: refreshLanbide
+            expirationTime: 1800 #in seconds
+    cors:
+        allowed-origin-patterns:
+            - '*'
+        allowed-methods:
+            - HEAD
+            - GET
+            - POST
+            - PUT
+            - PATCH
+            - DELETE
+        allowed-headers:
+            - Authorization
+            - Cache-Control
+            - Content-Type
+            - access-control-allow-origin
+            - accept
+        
+cookies:
+    refresh-token-cookie:
+        name: refresh-token
+        expiryTime: 1800 #in seconds
+        secure: false
+        http-only: true
+        uri: /refresh-token
+        
+management:
+    endpoints:
+        web:
+            exposure:
+                include: "*"

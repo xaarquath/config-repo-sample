@@ -17,7 +17,7 @@ environment:
     name: local
     
 client:
-    superpower: aaa
+    superpower: bbb
     
     
 springdoc:

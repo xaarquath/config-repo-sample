@@ -17,7 +17,7 @@ environment:
     name: local
     
 client:
-    superpower: bbb
+    superpower: ccc
         
 management:
     endpoints:
